@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField
-from wtforms.validators import DataRequired, URL, InputRequired, Email, Length
+from wtforms.validators import DataRequired, URL, InputRequired, Length
 from flask_ckeditor import CKEditorField
 
 
@@ -26,8 +26,7 @@ class RegistrationForm(FlaskForm):
 ##Login Form
 class LoginForm(FlaskForm):
     email = StringField(label='email',
-                        validators=[DataRequired(),
-                                    Email("You are missing @ and '.'")])
+                        validators=[DataRequired()])
     password = PasswordField(label='password',
                              validators=[DataRequired()])
     submit = SubmitField('Login')
