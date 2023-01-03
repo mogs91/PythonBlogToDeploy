@@ -113,8 +113,8 @@ class Comment(db.Model):
 
 
 # Line below only required once, when creating DB.
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 
 @app.route('/')
