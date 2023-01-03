@@ -21,6 +21,8 @@ from sqlalchemy import Table, Column, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
+import datetime as dt
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
@@ -116,8 +118,9 @@ class Comment(db.Model):
 
 @app.route('/')
 def get_all_posts():
+    current_year = dt.datetime.today()
     posts = BlogPost.query.all()
-    return render_template("index.html", all_posts=posts)
+    return render_template("index.html", all_posts=posts, year=current_year.year)
 
 
 @app.route('/register', methods=['GET', 'POST'])
